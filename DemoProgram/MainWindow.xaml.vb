@@ -33,4 +33,24 @@ Class MainWindow
     Private Sub MainWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         DataContext = TouchInjectionViewModel.Instance
     End Sub
+
+    Private Sub RectPointPicker_PreviewMouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles RectPointPicker.PreviewMouseLeftButtonDown
+        Dim picker As New PointPicker
+        Dim mousePt = e.GetPosition(Me)
+        Dim mouseX = mousePt.X + Left
+        Dim mouseY = mousePt.Y + Top
+        picker.Left = mouseX - 16
+        picker.Top = mouseY - 16
+        RectPointPicker.Visibility = Visibility.Collapsed
+        picker.Focus()
+        AddHandler picker.Closing,
+            Sub()
+                Dim vm = TouchInjectionViewModel.Instance
+                vm.PositionX = picker.Left + 16
+                vm.PositionY = picker.Top + 16
+                RectPointPicker.Visibility = Visibility.Visible
+            End Sub
+        picker.Show()
+    End Sub
+
 End Class
