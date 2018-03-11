@@ -87,7 +87,7 @@
     </Compile>
     <Compile Include="PointerButtonChangeType.vb" />
     <Compile Include="PointerInputType.vb" />
-    <Compile Include="TouchInputInjector.vb" />
+    <Compile Include="InputInjection.vb" />
     <Compile Include="UnsafeNativeMethods.vb" />
   </ItemGroup>
   <ItemGroup>
