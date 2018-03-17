@@ -24,7 +24,7 @@
         ''' <param name="dragTo">按下屏幕期间，需要拖动到哪个点。</param>
         ''' <param name="dragEasingX">需要拖动到的点 X 轴的缓动函数。默认是线性缓动。参数在 0 到 1 之间。</param>
         ''' <param name="dragEasingY">需要拖动到的点 Y 轴的缓动函数。默认是线性缓动。参数在 0 到 1 之间。</param>
-        ''' <remarks>缓动函数每秒钟会被执行 10000 次甚至更多。</remarks>
+        ''' <remarks>缓动函数每秒钟会被执行 10000 次甚至更多。需要确保缓动函数不能包含过于耗时的操作，以免触摸模拟失败。</remarks>
         Public Sub SendTouch(pos As (X As Integer, Y As Integer),
                              Optional durationMilliseconds As Integer = 150,
                              Optional orientation As Integer = 90,
