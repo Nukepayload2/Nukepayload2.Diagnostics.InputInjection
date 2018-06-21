@@ -84,20 +84,20 @@ End With
 ```
 
 ## Progress
-- [x] Touch Injection (Wrap [user32] InjectTouchInput and InitializeTouchInjection)
+- [x] Touch Injection (Wrap [user32] `InjectTouchInput` and [user32] `InitializeTouchInjection`)
 - [x] Convenient Touch Injection for RAD scenario
-- [ ] ~~Uninitialize Touch Injection~~ (UninitializeTouchInjection does not exist in user32)
-- [ ] ~~Gamepad Injection~~ ([user32] InjectDeviceInput and InitializeInputDeviceInjection are undocumented)
+- [ ] ~~Uninitialize Touch Injection~~ ([user32] `RemoveInjectionDevice` is undocumented)
+- [ ] ~~Gamepad Injection~~ (Win32 module `XboxgipSynthetic.dll` is undocumented)
 - [ ] ~~Convenient Gamepad Injection for RAD scenario~~
-- [ ] ~~Uninitialize Gamepad Injection~~
-- [ ] ~~Pen Injection~~ ([user32] InjectPointerInput and InitializePointerDeviceInjection are undocumented)
+- [ ] ~~Uninitialize Gamepad Injection~~ ([XboxgipSynthetic] `SyntheticController_RemoveController` is undocumented)
+- [ ] ~~Pen Injection~~ (Both [user32] `InjectPointerInput` and [user32] `InitializePointerDeviceInjection` are undocumented)
 - [ ] ~~Convenient Pen Injection for RAD scenario~~
-- [ ] ~~Uninitialize Pen Injection~~
-- [ ] ~~Mouse Injection~~ ([user32] InjectMouseInput is undocumented)
+- [ ] ~~Uninitialize Pen Injection~~ ([user32] `RemoveInjectionDevice` is undocumented)
+- [ ] ~~Mouse Injection~~ ([user32] `InjectMouseInput` is undocumented)
 - [ ] ~~Convenient Mouse Injection for RAD scenario~~
-- [ ] ~~Keyboard Injection~~ ([user32] InjectKeyboardInput is undocumented)
+- [ ] ~~Keyboard Injection~~ ([user32] `InjectKeyboardInput` is undocumented)
 - [ ] ~~Convenient Keyboard Injection for RAD scenario~~
-- [ ] ~~Shortcut Injection~~ ([user32] InjectKeyboardInput is undocumented)
+- [ ] ~~Shortcut Injection~~ ([user32] `InjectKeyboardInput` is undocumented)
 - [ ] ~~Convenient Shortcut Injection for RAD scenario~~
 - [x] Xml Document for zh-CN locale
 - [ ] Xml Document for en-US locale
