@@ -174,18 +174,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Nukepayload2.Diagnostics.InputInjection">
+      <Version>1.0.0-rc1</Version>
+    </PackageReference>
     <PackageReference Include="Nukepayload2.UI.WPFBorderlessWindow">
       <Version>1.0.0-beta6</Version>
     </PackageReference>
     <PackageReference Include="System.ValueTuple">
-      <Version>4.4.0</Version>
+      <Version>4.5.0</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Nukepayload2.Diagnosis.InputInjection\Nukepayload2.Diagnosis.InputInjection.vbproj">
-      <Project>{89F5CB9E-C328-4399-881F-CDABA08F93A0}</Project>
-      <Name>Nukepayload2.Diagnosis.InputInjection</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

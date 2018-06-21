@@ -1,4 +1,4 @@
-﻿Imports Nukepayload2.Diagnosis.InputInjection
+﻿Imports Nukepayload2.Diagnostics
 
 Public Class SimulateCommand
     Implements ICommand

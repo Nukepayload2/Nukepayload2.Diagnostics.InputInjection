@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 '查看程序集特性的值
 
-<Assembly: AssemblyTitle("Nukepayload2.Diagnosis.InputInjection")>
+<Assembly: AssemblyTitle("Nukepayload2.Diagnostics.InputInjection")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("Nukepayload2")>
-<Assembly: AssemblyProduct("Nukepayload2.Diagnosis.InputInjection")>
-<Assembly: AssemblyCopyright("Copyright © Nukepayload2 2018")>
+<Assembly: AssemblyProduct("Nukepayload2.Diagnostics.InputInjection")>
+<Assembly: AssemblyCopyright("Copyright © 2018 Nukepayload2")>
 <Assembly: AssemblyTrademark("Nukepayload2")>
 
 <Assembly: ComVisible(False)>
