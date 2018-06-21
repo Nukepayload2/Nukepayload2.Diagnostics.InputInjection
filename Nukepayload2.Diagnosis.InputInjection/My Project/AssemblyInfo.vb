@@ -10,10 +10,10 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("Nukepayload2.Diagnosis.InputInjection")>
 <Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyCompany("Nukepayload2")>
 <Assembly: AssemblyProduct("Nukepayload2.Diagnosis.InputInjection")>
-<Assembly: AssemblyCopyright("Copyright ©  2018")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyCopyright("Copyright © Nukepayload2 2018")>
+<Assembly: AssemblyTrademark("Nukepayload2")>
 
 <Assembly: ComVisible(False)>
 
