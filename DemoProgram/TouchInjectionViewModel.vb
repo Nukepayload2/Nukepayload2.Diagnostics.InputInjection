@@ -62,5 +62,7 @@ Public Class TouchInjectionViewModel
         End Set
     End Property
 
+    Public Property HumanInputSimulateParameters As InaccurateTouchPoint = InaccurateTouchPoint.Button
+
     Public ReadOnly Property SimulateCommand As New SimulateCommand
 End Class

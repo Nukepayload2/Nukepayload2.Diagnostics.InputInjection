@@ -1,4 +1,5 @@
-﻿Imports Nukepayload2.UI.Win32
+﻿Imports System.Windows.Threading
+Imports Nukepayload2.UI.Win32
 
 Class MainWindow
     Private Sub TitleBarDragElement_PreviewMouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles TitleBarDragElement.PreviewMouseLeftButtonDown

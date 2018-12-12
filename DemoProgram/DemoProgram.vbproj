@@ -63,6 +63,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System.Core" />
@@ -84,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="InaccurateTouchPoint.vb" />
     <Compile Include="PointPicker.xaml.vb">
       <DependentUpon>PointPicker.xaml</DependentUpon>
     </Compile>
@@ -158,6 +162,7 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
@@ -174,15 +179,18 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Nukepayload2.Diagnostics.InputInjection">
-      <Version>1.0.0-rc1</Version>
-    </PackageReference>
     <PackageReference Include="Nukepayload2.UI.WPFBorderlessWindow">
       <Version>1.0.0-beta6</Version>
     </PackageReference>
     <PackageReference Include="System.ValueTuple">
       <Version>4.5.0</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nukepayload2.Diagnostics.InputInjection\Nukepayload2.Diagnostics.InputInjection.vbproj">
+      <Project>{89f5cb9e-c328-4399-881f-cdaba08f93a0}</Project>
+      <Name>Nukepayload2.Diagnostics.InputInjection</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
