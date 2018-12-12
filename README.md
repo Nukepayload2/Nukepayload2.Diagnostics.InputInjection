@@ -3,7 +3,7 @@ A .NET Framework Port of Windows.UI.Input.Preview.Injection
 
 You can use it for software testing ~~or writing tools for cheating in games~~.
 
-We will not wrap undocumented APIs since they have potential compatibility issues.
+We will provide wrapped undocumented APIs in the `Nukepayload2.Diagnostics.Preview` namespace.
 
 ## Commonly used types:
 - Nukepayload2.Diagnostics.InputInjection
@@ -93,11 +93,11 @@ End With
 - [ ] ~~Pen Injection~~ (Both [user32] `InjectPointerInput` and [user32] `InitializePointerDeviceInjection` are undocumented)
 - [ ] ~~Convenient Pen Injection for RAD scenario~~
 - [ ] ~~Uninitialize Pen Injection~~ ([user32] `RemoveInjectionDevice` is undocumented)
-- [ ] ~~Mouse Injection~~ ([user32] `InjectMouseInput` is undocumented)
+- [x] Mouse Injection (Preview, [user32] `InjectMouseInput` is undocumented)
 - [ ] ~~Convenient Mouse Injection for RAD scenario~~
-- [ ] ~~Keyboard Injection~~ ([user32] `InjectKeyboardInput` is undocumented)
-- [ ] ~~Convenient Keyboard Injection for RAD scenario~~
-- [ ] ~~Shortcut Injection~~ ([user32] `InjectKeyboardInput` is undocumented)
+- [x] Keyboard Injection (Preview, [user32] `InjectKeyboardInput` is undocumented)
+- [ ] ~~Convenient Keyboard Injection for RAD scenario~~ (SendKeys already exists)
+- [ ] ~~Shortcut Injection~~ (Duplicate of Keyboard Injection, [user32] `InjectKeyboardInput` is undocumented)
 - [ ] ~~Convenient Shortcut Injection for RAD scenario~~
 - [x] Xml Document for zh-CN locale
 - [ ] Xml Document for en-US locale
