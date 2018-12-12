@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports Nukepayload2.Diagnostics.Preview
 
 ''' <summary>
 ''' 表示用于发送输入数据的虚拟输入设备。
@@ -36,6 +37,26 @@ Public NotInheritable Class InputInjection
         End If
         Return True
     End Function
+
+    ''' <summary>
+    ''' (Preview) Sends programmatically generated keyboard input to the system.
+    ''' </summary>
+    ''' <param name="input">The keyboard input specified by <see cref="InjectedInputKeyboardInfo"/>.</param>
+    Public Sub InjectKeyboardInput(ParamArray input As InjectedInputKeyboardInfo())
+        If Not Preview.InjectKeyboardInput(input, input.Count) Then
+            Throw New Win32Exception
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' (Preview) Sends programmatically generated mouse input to the system.
+    ''' </summary>
+    ''' <param name="input">The keyboard input specified by <see cref="InjectedInputMouseInfo"/>.</param>
+    Public Sub InjectMouseInput(ParamArray input As InjectedInputMouseInfo())
+        If Not Preview.InjectMouseInput(input, input.Count) Then
+            Throw New Win32Exception
+        End If
+    End Sub
 
     ''' <summary>
     ''' 尝试创建 InputInjector 类的新实例。

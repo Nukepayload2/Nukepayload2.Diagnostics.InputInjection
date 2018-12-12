@@ -71,6 +71,10 @@
     <Compile Include="InjectedInputTouchInfo.vb" />
     <Compile Include="InjectedInputTouchParameters.vb" />
     <Compile Include="InjectedInputVisualizationMode.vb" />
+    <Compile Include="Preview\InjectedInputKeyboardInfo.vb" />
+    <Compile Include="Preview\InjectedInputKeyOptions.vb" />
+    <Compile Include="Preview\InjectedInputMouseInfo.vb" />
+    <Compile Include="Preview\InjectedInputMouseOptions.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -90,6 +94,9 @@
     <Compile Include="PointerButtonChangeType.vb" />
     <Compile Include="PointerInputType.vb" />
     <Compile Include="InputInjection.vb" />
+    <Compile Include="Preview\ScanCode.vb" />
+    <Compile Include="Preview\VirtualKey.vb" />
+    <Compile Include="Preview\UnsafeNativeMethods.Preview.vb" />
     <Compile Include="UnsafeNativeMethods.vb" />
   </ItemGroup>
   <ItemGroup>

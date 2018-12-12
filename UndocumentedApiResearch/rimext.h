@@ -7,6 +7,9 @@
 *                                                                           *
 ****************************************************************************/
 #pragma once
+#pragma unmanaged
+#pragma comment(lib, "User32.lib")
+
 #ifndef _RIM_EXT_H_
 #define _RIM_EXT_H_
 
@@ -19,11 +22,11 @@
 #include <nt.h>
 #include <ntrtl.h>
 #include <nturtl.h>
+#endif
 //#include <ntddkbd.h> later
 //#include <ntddmou.h> later
 #include <windows.h>
 #pragma warning (disable : 4201)
-#endif
 
 /* APISET_NAME: ext-ms-win-ntuser-rim-l1 */
 
