@@ -28,7 +28,7 @@ Public NotInheritable Class InputInjection
     ''' <returns>如果成功，返回 True。如果注入的间隔小于 0.1 毫秒导致系统没能接收触摸注入, 返回 False。</returns>
     ''' <exception cref="Win32Exception"/>
     Public Function InjectTouchInput(ParamArray input As InjectedInputTouchInfo()) As Boolean
-        If Not UnsafeNativeMethods.InjectTouchInput(input.Count, input) Then
+        If Not UnsafeNativeMethods.InjectTouchInput(input.Length, input) Then
             Const ERROR_NOT_READY As Integer = 21
             If Err.LastDllError = ERROR_NOT_READY Then
                 Return False
@@ -43,7 +43,7 @@ Public NotInheritable Class InputInjection
     ''' </summary>
     ''' <param name="input">The keyboard input specified by <see cref="InjectedInputKeyboardInfo"/>.</param>
     Public Sub InjectKeyboardInput(ParamArray input As InjectedInputKeyboardInfo())
-        If Not Preview.InjectKeyboardInput(input, input.Count) Then
+        If Not Preview.InjectKeyboardInput(input, input.Length) Then
             Throw New Win32Exception
         End If
     End Sub
@@ -53,7 +53,7 @@ Public NotInheritable Class InputInjection
     ''' </summary>
     ''' <param name="input">The keyboard input specified by <see cref="InjectedInputMouseInfo"/>.</param>
     Public Sub InjectMouseInput(ParamArray input As InjectedInputMouseInfo())
-        If Not Preview.InjectMouseInput(input, input.Count) Then
+        If Not Preview.InjectMouseInput(input, input.Length) Then
             Throw New Win32Exception
         End If
     End Sub

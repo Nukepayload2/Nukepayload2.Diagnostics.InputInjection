@@ -4,7 +4,7 @@
     ''' 可能的按键。包括鼠标，手柄和键盘的。 &lt;= 218 的值可以转换成 Windows.System.VirtualKey。
     ''' 所有与键盘相关的值可以转换成 Microsoft.Xna.Framework.Input.Keys。
     ''' </summary>
-    Public Enum VirtualKey
+    Public Enum VirtualKey As Short
         None = 0
         LeftButton = 1
         RightButton = 2

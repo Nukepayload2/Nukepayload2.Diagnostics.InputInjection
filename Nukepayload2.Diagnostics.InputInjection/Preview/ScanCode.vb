@@ -5,7 +5,7 @@
     ''' A keyboard generates two scan codes When the user types a key—one 
     ''' When the user presses the key And another When the user releases the key.
     ''' </summary>
-    Public Enum ScanCode
+    Public Enum ScanCode As Short
         LBUTTON = 0
         RBUTTON = 0
         CANCEL = 70
