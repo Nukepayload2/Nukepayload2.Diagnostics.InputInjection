@@ -1,15 +1,21 @@
 # Nukepayload2.Diagnostics.InputInjection
-A .NET Framework Port of Windows.UI.Input.Preview.Injection
+A .NET Standard Port of Windows.UI.Input.Preview.Injection
+
+[Download on Nuget](https://www.nuget.org/packages/Nukepayload2.Diagnostics.InputInjection)
 
 You can use it for software testing ~~or writing tools for cheating in games~~.
 
-We will provide wrapped undocumented APIs in the `Nukepayload2.Diagnostics.Preview` namespace.
+We provide wrapped undocumented APIs in the `Nukepayload2.Diagnostics.Preview` namespace.
 
 ## Commonly used types:
 - Nukepayload2.Diagnostics.InputInjection
 - Nukepayload2.Diagnostics.Interaction.SendTouch
 
-## Sample codes
+## Requirements
+- Windows 10 (Recommended), Windows 8.1, Windows 8
+- .NET Standard 2.0 or .NET Framework 4.5
+
+## Sample
 #### Touch at 123, 456 for 789 milliseconds with SendTouch
 __VB__
 ```vb

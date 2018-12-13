@@ -3,6 +3,23 @@
   <PropertyGroup>
     <RootNamespace>Nukepayload2.Diagnostics</RootNamespace>
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <AssemblyVersion>1.1.2.0</AssemblyVersion>
+    <DocumentationFile>Nukepayload2.Diagnostics.InputInjection.xml</DocumentationFile>
+    <FileVersion>1.1.2.0</FileVersion>
+    <Version>1.1.2-rc3</Version>
+    <Authors>Nukepayload2</Authors>
+    <Description>This package is a .NET Framework Port of Windows.UI.Input.Preview.Injection .
+The touch injection related APIs are successfully ported. However, other APIs are not ported or in preview since they are undocumented in the classic desktop environment.
+Commonly Used Types:
+Nukepayload2.Diagnostics.InputInjection
+Nukepayload2.Diagnostics.Interaction</Description>
+    <PackageTags>touch keyboard mouse input injection</PackageTags>
+    <RepositoryUrl>https://github.com/Nukepayload2/Nukepayload2.Diagnostics.InputInjection</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Nukepayload2/Nukepayload2.Diagnostics.InputInjection</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/Nukepayload2/Nukepayload2.Diagnostics.InputInjection/blob/master/LICENSE</PackageLicenseUrl>
+    <Copyright>Copyright 2018 Nukepayload2</Copyright>
+    <PackageReleaseNotes>Target .net standard 2.0 and .net framework 4.5
+Fixed a bug in keyboard injection</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
