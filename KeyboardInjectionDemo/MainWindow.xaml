@@ -37,6 +37,7 @@
                 <TextBox Margin="0,4" x:Name="TxtTest"/>
                 <Button HorizontalAlignment="Left" Padding="16,8" Margin="0,4" x:Name="BtnInputVK" Content="Input WASD with virtual key"/>
                 <Button HorizontalAlignment="Left" Padding="16,8" Margin="0,4" x:Name="BtnInputScan" Content="Input WASD with scan code"/>
+                <Button HorizontalAlignment="Left" Padding="16,8" Margin="0,4" x:Name="BtnInputUnicode" Content="Input WASD with unicode"/>
             </StackPanel>
         </Border>
     </Grid>

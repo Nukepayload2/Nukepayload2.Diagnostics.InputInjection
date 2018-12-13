@@ -54,6 +54,13 @@ Class MainWindow
         inject.InjectKeyboardInput(keyboardInfo)
     End Sub
 
+    Private Shared Sub InjectUnicodeKeyPress(inject As InputInjection, key As Char)
+        Dim keyboardInfo As New InjectedInputKeyboardInfo With {
+            .ScanCode = AscW(key), .KeyOptions = InjectedInputKeyOptions.Unicode
+        }
+        inject.InjectKeyboardInput(keyboardInfo)
+    End Sub
+
     Private Shared Async Function InjectScanKeyDownAndUp(
         inject As InputInjection,
         key As ScanCode,
@@ -81,6 +88,21 @@ Class MainWindow
             Await InjectScanKeyDownAndUp(inject, ScanCode.KEY_S)
             Await Task.Delay(100)
             Await InjectScanKeyDownAndUp(inject, ScanCode.KEY_D)
+        End If
+    End Sub
+
+    Private Async Sub BtnInputUnicode_ClickAsync(sender As Object, e As RoutedEventArgs) Handles BtnInputUnicode.Click
+        TxtTest.Focus()
+        Await Task.Delay(100)
+        Dim inject = InputInjection.TryCreate
+        If inject IsNot Nothing Then
+            InjectUnicodeKeyPress(inject, "W"c)
+            Await Task.Delay(100)
+            InjectUnicodeKeyPress(inject, "A"c)
+            Await Task.Delay(100)
+            InjectUnicodeKeyPress(inject, "S"c)
+            Await Task.Delay(100)
+            InjectUnicodeKeyPress(inject, "D"c)
         End If
     End Sub
 End Class
