@@ -23,11 +23,11 @@ Fixed a bug in keyboard injection</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <Compile Remove="InputInjection.NetFw.vb" />
+    <Compile Remove="InputInjector.NetFw.vb" />
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
-    <Compile Remove="InputInjection.NetStd.vb" />
+    <Compile Remove="InputInjector.NetStd.vb" />
   </ItemGroup>
   
   <ItemGroup>

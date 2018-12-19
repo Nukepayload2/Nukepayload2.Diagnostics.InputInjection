@@ -8,7 +8,7 @@ You can use it for software testing ~~or writing tools for cheating in games~~.
 We provide wrapped undocumented APIs in the `Nukepayload2.Diagnostics.Preview` namespace.
 
 ## Commonly used types:
-- Nukepayload2.Diagnostics.InputInjection
+- Nukepayload2.Diagnostics.InputInjector
 - Nukepayload2.Diagnostics.Interaction.SendTouch
 
 ## Requirements
@@ -30,7 +30,7 @@ SendTouch(123, 456, 789);
 #### Touch at 123, 456 for 789 milliseconds with InputInjection
 __VB__
 ```vb
-Dim injection = InputInjection.TryCreate
+Dim injection = InputInjector.TryCreate
 If injection Is Nothing Then MsgBox("Your system is too old to use touch injection.", vbExclamation, "Not supported")
 injection.InitializeTouchInjection(InjectedInputVisualizationMode.Default)
 Const PosX = 123
@@ -102,7 +102,7 @@ End With
 - [x] Mouse Injection (Preview, [user32] `InjectMouseInput` is undocumented)
 - [ ] ~~Convenient Mouse Injection for RAD scenario~~
 - [x] Keyboard Injection (Preview, [user32] `InjectKeyboardInput` is undocumented)
-- [ ] ~~Convenient Keyboard Injection for RAD scenario~~ (SendKeys already exists)
+- [x] Convenient Keyboard Injection for RAD scenario
 - [ ] ~~Shortcut Injection~~ (Duplicate of Keyboard Injection, [user32] `InjectKeyboardInput` is undocumented)
 - [ ] ~~Convenient Shortcut Injection for RAD scenario~~
 - [x] Xml Document for zh-CN locale
