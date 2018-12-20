@@ -55,18 +55,18 @@ Namespace Preview
         End Function
 
         Function AsciiSymbolToScanCode(number As Char, useNumPad As Boolean) As ScanCode
-            Select Case number
-                Case " "c : Return If(useNumPad, ScanCode.NUMPAD0, ScanCode.KEY_0)
-                Case "\"c : Return If(useNumPad, ScanCode.NUMPAD1, ScanCode.KEY_1)
-                Case "/"c : Return If(useNumPad, ScanCode.NUMPAD2, ScanCode.KEY_2)
-                Case "["c : Return If(useNumPad, ScanCode.NUMPAD3, ScanCode.KEY_3)
-                Case "]"c : Return If(useNumPad, ScanCode.NUMPAD4, ScanCode.KEY_4)
-                Case ";"c : Return If(useNumPad, ScanCode.NUMPAD5, ScanCode.KEY_5)
-                Case "'"c : Return If(useNumPad, ScanCode.NUMPAD6, ScanCode.KEY_6)
-                Case ","c : Return If(useNumPad, ScanCode.NUMPAD7, ScanCode.KEY_7)
-                Case "."c : Return If(useNumPad, ScanCode.NUMPAD8, ScanCode.KEY_8)
-                Case "-"c : Return If(useNumPad, ScanCode.NUMPAD9, ScanCode.KEY_9)
-                Case "/"c : Return If(useNumPad, ScanCode.NUMPAD9, ScanCode.KEY_9)
+            Select Case number 'WIP
+                Case " "c : Return ScanCode.SPACE
+                Case "\"c : Return ScanCode.SPACE
+                Case "/"c : Return ScanCode.SPACE
+                Case "["c : Return ScanCode.SPACE
+                Case "]"c : Return ScanCode.SPACE
+                Case ";"c : Return ScanCode.SPACE
+                Case "'"c : Return ScanCode.SPACE
+                Case ","c : Return ScanCode.SPACE
+                Case "."c : Return ScanCode.SPACE
+                Case "-"c : Return ScanCode.SPACE
+                Case "/"c : Return ScanCode.SPACE
                 Case Else
                     Return Nothing
             End Select

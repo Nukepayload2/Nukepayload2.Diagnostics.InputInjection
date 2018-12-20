@@ -42,11 +42,25 @@
             s_injection.InjectKeyboardInput(keyboardInfo)
         End Sub
 
-        Public Sub SendChar(key As Char)
+        Public Sub SendChar(unicodeChar As Char)
             Dim keyboardInfo As New InjectedInputKeyboardInfo With {
-                .ScanCode = AscW(key), .KeyOptions = InjectedInputKeyOptions.Unicode
+                .ScanCode = AscW(unicodeChar), .KeyOptions = InjectedInputKeyOptions.Unicode
             }
             s_injection.InjectKeyboardInput(keyboardInfo)
         End Sub
+
+        Public Async Function SendTextAsync(text As String, Optional delay As Integer = 34) As Task
+            If text = Nothing Then
+                Return
+            End If
+            Dim keyboardInfo As New InjectedInputKeyboardInfo With {
+                .KeyOptions = InjectedInputKeyOptions.Unicode
+            }
+            For Each ch In text
+                keyboardInfo.ScanCode = AscW(ch)
+                s_injection.InjectKeyboardInput(keyboardInfo)
+                Await Task.Delay(delay)
+            Next
+        End Function
     End Module
 End Namespace
