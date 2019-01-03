@@ -4,7 +4,7 @@
         ''' <summary>
         ''' 注入全局的按键按下输入
         ''' </summary>
-        ''' <param name="keyCode">按键的扫描码。可以通过 Win32 API MapVirtualKey 得到扫描码。</param>
+        ''' <param name="keyCode">按键的扫描码。</param>
         Public Sub SendKeyDown(keyCode As ScanCode)
             If s_injection Is Nothing Then
                 Throw New PlatformNotSupportedException
@@ -16,9 +16,17 @@
         End Sub
 
         ''' <summary>
+        ''' 注入全局的按键按下输入
+        ''' </summary>
+        ''' <param name="key">按键的虚拟键码。将发送等价的扫描码。</param>
+        Public Sub SendKeyDown(key As VirtualKey)
+            SendKeyDown(key.ToScanCode)
+        End Sub
+
+        ''' <summary>
         ''' 注入全局的按键松开输入
         ''' </summary>
-        ''' <param name="keyCode">按键的扫描码。可以通过 Win32 API MapVirtualKey 得到扫描码。</param>
+        ''' <param name="keyCode">按键的扫描码。</param>
         Public Sub SendKeyUp(keyCode As ScanCode)
             If s_injection Is Nothing Then
                 Throw New PlatformNotSupportedException
@@ -28,6 +36,14 @@
                 InjectedInputKeyOptions.KeyUp
             }
             s_injection.InjectKeyboardInput(keyboardInfo)
+        End Sub
+
+        ''' <summary>
+        ''' 注入全局的按键松开输入
+        ''' </summary>
+        ''' <param name="key">按键的虚拟键码。将发送等价的扫描码。</param>
+        Public Sub SendKeyUp(key As VirtualKey)
+            SendKeyUp(key.ToScanCode)
         End Sub
 
         ''' <summary>
@@ -46,6 +62,15 @@
             Await Task.Delay(delay)
             keyboardInfo.KeyOptions = InjectedInputKeyOptions.KeyUp Or InjectedInputKeyOptions.ScanCode
             s_injection.InjectKeyboardInput(keyboardInfo)
+        End Function
+
+        ''' <summary>
+        ''' 注入全局的按键按下然后松开输入。通常对游戏模拟输入需要用这种方式。
+        ''' </summary>
+        ''' <param name="key">按键的虚拟键码。将对游戏发送等价的扫描码。</param>
+        ''' <param name="delay">按键按下到松开的间隔 (毫秒)</param>
+        Public Async Function SendKeyPressToGameAsync(key As VirtualKey, Optional delay As Integer = 34) As Task
+            Await SendKeyPressToGameAsync(key.ToScanCode, delay)
         End Function
 
         ''' <summary>

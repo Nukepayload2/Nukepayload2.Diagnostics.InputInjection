@@ -35,7 +35,7 @@ Class MainWindow
     Private Async Sub BtnInputVK_ClickAsync(sender As Object, e As RoutedEventArgs) Handles BtnInputVK.Click
         TxtTest.Focus()
         Await Task.Delay(100)
-        Dim inject = InputInjection.TryCreate
+        Dim inject = InputInjector.TryCreate
         If inject IsNot Nothing Then
             InjectVirtualKeyPress(inject, VirtualKey.W)
             Await Task.Delay(100)
@@ -47,14 +47,14 @@ Class MainWindow
         End If
     End Sub
 
-    Private Shared Sub InjectVirtualKeyPress(inject As InputInjection, key As VirtualKey)
+    Private Shared Sub InjectVirtualKeyPress(inject As InputInjector, key As VirtualKey)
         Dim keyboardInfo As New InjectedInputKeyboardInfo With {
             .VirtualKey = key
         }
         inject.InjectKeyboardInput(keyboardInfo)
     End Sub
 
-    Private Shared Sub InjectUnicodeKeyPress(inject As InputInjection, key As Char)
+    Private Shared Sub InjectUnicodeKeyPress(inject As InputInjector, key As Char)
         Dim keyboardInfo As New InjectedInputKeyboardInfo With {
             .ScanCode = AscW(key), .KeyOptions = InjectedInputKeyOptions.Unicode
         }
@@ -62,7 +62,7 @@ Class MainWindow
     End Sub
 
     Private Shared Async Function InjectScanKeyDownAndUp(
-        inject As InputInjection,
+        inject As InputInjector,
         key As ScanCode,
         Optional delay As Integer = 34
     ) As Task
@@ -79,11 +79,11 @@ Class MainWindow
     Private Async Sub BtnInputScan_ClickAsync(sender As Object, e As RoutedEventArgs) Handles BtnInputScan.Click
         TxtTest.Focus()
         Await Task.Delay(100)
-        Dim inject = InputInjection.TryCreate
+        Dim inject = InputInjector.TryCreate
         If inject IsNot Nothing Then
-            Await InjectScanKeyDownAndUp(inject, ScanCode.KEY_W)
+            Await InjectScanKeyDownAndUp(inject, VirtualKey.W.ToScanCode)
             Await Task.Delay(100)
-            Await InjectScanKeyDownAndUp(inject, ScanCode.KEY_A)
+            Await SendKeyPressToGameAsync(VirtualKey.S.ToScanCode, 34)
             Await Task.Delay(100)
             Await InjectScanKeyDownAndUp(inject, ScanCode.KEY_S)
             Await Task.Delay(100)
@@ -94,7 +94,7 @@ Class MainWindow
     Private Async Sub BtnInputUnicode_ClickAsync(sender As Object, e As RoutedEventArgs) Handles BtnInputUnicode.Click
         TxtTest.Focus()
         Await Task.Delay(100)
-        Dim inject = InputInjection.TryCreate
+        Dim inject = InputInjector.TryCreate
         If inject IsNot Nothing Then
             InjectUnicodeKeyPress(inject, "W"c)
             Await Task.Delay(100)
