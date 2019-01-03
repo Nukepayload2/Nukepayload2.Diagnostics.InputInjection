@@ -24,9 +24,9 @@ Namespace Preview
         '    _In_reads_(count) CONST PKEYBDINPUT pKeyboardInput,
         '    _In_ UINT32 count
         '    );
-        Declare Function InjectKeyboardInput Lib "user32.dll" (
+        Declare Unicode Function InjectKeyboardInput Lib "user32.dll" (
             <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=1)>
-            mouseInput As InjectedInputKeyboardInfo(),
+            keyboardInput As InjectedInputKeyboardInfo(),
             count As Integer
         ) As <MarshalAs(UnmanagedType.Bool)> Boolean
 

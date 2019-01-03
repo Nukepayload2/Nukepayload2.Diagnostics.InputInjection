@@ -47,11 +47,11 @@
         End Sub
 
         ''' <summary>
-        ''' 注入全局的按键按下然后松开输入。通常对游戏模拟输入需要用这种方式。
+        ''' 注入全局的键盘按键按下和松开。通常对游戏模拟输入需要用这种方式。
         ''' </summary>
-        ''' <param name="keyCode">按键的扫描码。可以通过 Win32 API MapVirtualKey 得到扫描码。</param>
+        ''' <param name="keyCode">按键的扫描码。</param>
         ''' <param name="delay">按键按下到松开的间隔 (毫秒)</param>
-        Public Async Function SendKeyPressToGameAsync(keyCode As ScanCode, delay As Integer) As Task
+        Public Async Function SendKeyPressToGameAsync(keyCode As ScanCode, Optional delay As Integer = 34) As Task
             If s_injection Is Nothing Then
                 Throw New PlatformNotSupportedException
             End If
@@ -65,12 +65,143 @@
         End Function
 
         ''' <summary>
-        ''' 注入全局的按键按下然后松开输入。通常对游戏模拟输入需要用这种方式。
+        ''' 注入全局的键盘两个按键同时按下和松开。通常对游戏模拟输入需要用这种方式。
+        ''' </summary>
+        ''' <param name="key1">按键的扫描码。</param>
+        ''' <param name="delay">按键按下到松开的间隔 (毫秒)</param>
+        Public Async Function SendKeyPressToGameAsync(key1 As ScanCode, key2 As ScanCode, Optional delay As Integer = 34) As Task
+            If s_injection Is Nothing Then
+                Throw New PlatformNotSupportedException
+            End If
+            Dim keyboardInfo1 As New InjectedInputKeyboardInfo With {
+                .ScanCode = key1, .KeyOptions = InjectedInputKeyOptions.ScanCode
+            }
+            Dim keyboardInfo2 As New InjectedInputKeyboardInfo With {
+                .ScanCode = key2, .KeyOptions = InjectedInputKeyOptions.ScanCode
+            }
+            s_injection.InjectKeyboardInput(keyboardInfo1) ' 一起传提示有参数错误。所以分开传了。
+            s_injection.InjectKeyboardInput(keyboardInfo2)
+            Await Task.Delay(delay)
+            keyboardInfo1.KeyOptions = InjectedInputKeyOptions.KeyUp Or InjectedInputKeyOptions.ScanCode
+            keyboardInfo2.KeyOptions = InjectedInputKeyOptions.KeyUp Or InjectedInputKeyOptions.ScanCode
+            s_injection.InjectKeyboardInput(keyboardInfo2)
+            s_injection.InjectKeyboardInput(keyboardInfo1) ' 一起传提示有参数错误。所以分开传了。
+        End Function
+
+        ''' <summary>
+        ''' 注入全局的键盘三个按键同时按下和松开。通常对游戏模拟输入需要用这种方式。
+        ''' </summary>
+        ''' <param name="key1">按键的扫描码。</param>
+        ''' <param name="delay">按键按下到松开的间隔 (毫秒)</param>
+        Public Async Function SendKeyPressToGameAsync(key1 As ScanCode, key2 As ScanCode, key3 As ScanCode, Optional delay As Integer = 34) As Task
+            If s_injection Is Nothing Then
+                Throw New PlatformNotSupportedException
+            End If
+            Dim keyboardInfo1 As New InjectedInputKeyboardInfo With {
+                .ScanCode = key1, .KeyOptions = InjectedInputKeyOptions.ScanCode
+            }
+            Dim keyboardInfo2 As New InjectedInputKeyboardInfo With {
+                .ScanCode = key2, .KeyOptions = InjectedInputKeyOptions.ScanCode
+            }
+            Dim keyboardInfo3 As New InjectedInputKeyboardInfo With {
+                .ScanCode = key3, .KeyOptions = InjectedInputKeyOptions.ScanCode
+            }
+            s_injection.InjectKeyboardInput(keyboardInfo1) ' 一起传提示有参数错误。所以分开传了。
+            s_injection.InjectKeyboardInput(keyboardInfo2)
+            s_injection.InjectKeyboardInput(keyboardInfo3)
+            Await Task.Delay(delay)
+            keyboardInfo1.KeyOptions = InjectedInputKeyOptions.KeyUp Or InjectedInputKeyOptions.ScanCode
+            keyboardInfo2.KeyOptions = InjectedInputKeyOptions.KeyUp Or InjectedInputKeyOptions.ScanCode
+            keyboardInfo3.KeyOptions = InjectedInputKeyOptions.KeyUp Or InjectedInputKeyOptions.ScanCode
+            s_injection.InjectKeyboardInput(keyboardInfo3)
+            s_injection.InjectKeyboardInput(keyboardInfo2)
+            s_injection.InjectKeyboardInput(keyboardInfo1) ' 一起传提示有参数错误。所以分开传了。
+        End Function
+
+        ''' <summary>
+        ''' 注入全局的键盘四个按键同时按下和松开。通常对游戏模拟输入需要用这种方式。
+        ''' </summary>
+        ''' <param name="key1">按键的扫描码。</param>
+        ''' <param name="delay">按键按下到松开的间隔 (毫秒)</param>
+        Public Async Function SendKeyPressToGameAsync(key1 As ScanCode, key2 As ScanCode, key3 As ScanCode, key4 As ScanCode, Optional delay As Integer = 34) As Task
+            If s_injection Is Nothing Then
+                Throw New PlatformNotSupportedException
+            End If
+            Dim keyboardInfo1 As New InjectedInputKeyboardInfo With {
+                .ScanCode = key1, .KeyOptions = InjectedInputKeyOptions.ScanCode
+            }
+            Dim keyboardInfo2 As New InjectedInputKeyboardInfo With {
+                .ScanCode = key2, .KeyOptions = InjectedInputKeyOptions.ScanCode
+            }
+            Dim keyboardInfo3 As New InjectedInputKeyboardInfo With {
+                .ScanCode = key3, .KeyOptions = InjectedInputKeyOptions.ScanCode
+            }
+            Dim keyboardInfo4 As New InjectedInputKeyboardInfo With {
+                .ScanCode = key4, .KeyOptions = InjectedInputKeyOptions.ScanCode
+            }
+            s_injection.InjectKeyboardInput(keyboardInfo1) ' 一起传提示有参数错误。所以分开传了。
+            s_injection.InjectKeyboardInput(keyboardInfo2)
+            s_injection.InjectKeyboardInput(keyboardInfo3)
+            s_injection.InjectKeyboardInput(keyboardInfo4)
+            Await Task.Delay(delay)
+            keyboardInfo1.KeyOptions = InjectedInputKeyOptions.KeyUp Or InjectedInputKeyOptions.ScanCode
+            keyboardInfo2.KeyOptions = InjectedInputKeyOptions.KeyUp Or InjectedInputKeyOptions.ScanCode
+            keyboardInfo3.KeyOptions = InjectedInputKeyOptions.KeyUp Or InjectedInputKeyOptions.ScanCode
+            keyboardInfo4.KeyOptions = InjectedInputKeyOptions.KeyUp Or InjectedInputKeyOptions.ScanCode
+            s_injection.InjectKeyboardInput(keyboardInfo4)
+            s_injection.InjectKeyboardInput(keyboardInfo3)
+            s_injection.InjectKeyboardInput(keyboardInfo2)
+            s_injection.InjectKeyboardInput(keyboardInfo1) ' 一起传提示有参数错误。所以分开传了。
+        End Function
+
+        ''' <summary>
+        ''' 注入全局的键盘按键按下和松开。通常对游戏模拟输入需要用这种方式。
         ''' </summary>
         ''' <param name="key">按键的虚拟键码。将对游戏发送等价的扫描码。</param>
         ''' <param name="delay">按键按下到松开的间隔 (毫秒)</param>
         Public Async Function SendKeyPressToGameAsync(key As VirtualKey, Optional delay As Integer = 34) As Task
             Await SendKeyPressToGameAsync(key.ToScanCode, delay)
+        End Function
+
+        ''' <summary>
+        ''' 注入全局的键盘两个按键同时按下和松开。通常对游戏模拟输入需要用这种方式。
+        ''' </summary>
+        ''' <param name="key1">按键的虚拟键码。将对游戏发送等价的扫描码。</param>
+        ''' <param name="key2">按键的虚拟键码。将对游戏发送等价的扫描码。</param>
+        ''' <param name="delay">按键按下到松开的间隔 (毫秒)</param>
+        Public Async Function SendKeyPressToGameAsync(key1 As VirtualKey, key2 As VirtualKey, Optional delay As Integer = 34) As Task
+            Dim layout = GetKeyboardLayout(0)
+            Await SendKeyPressToGameAsync(key1.ToScanCode(layout), key2.ToScanCode(layout), delay)
+        End Function
+
+        ''' <summary>
+        ''' 注入全局的键盘三个按键同时按下和松开。通常对游戏模拟输入需要用这种方式。
+        ''' </summary>
+        ''' <param name="key1">按键的虚拟键码。将对游戏发送等价的扫描码。</param>
+        ''' <param name="key2">按键的虚拟键码。将对游戏发送等价的扫描码。</param>
+        ''' <param name="key3">按键的虚拟键码。将对游戏发送等价的扫描码。</param>
+        ''' <param name="delay">按键按下到松开的间隔 (毫秒)</param>
+        Public Async Function SendKeyPressToGameAsync(key1 As VirtualKey, key2 As VirtualKey,
+                                                      key3 As VirtualKey, Optional delay As Integer = 34) As Task
+            Dim layout = GetKeyboardLayout(0)
+            Await SendKeyPressToGameAsync(key1.ToScanCode(layout), key2.ToScanCode(layout),
+                                          key3.ToScanCode(layout), delay)
+        End Function
+
+        ''' <summary>
+        ''' 注入全局的键盘四个按键同时按下和松开。通常对游戏模拟输入需要用这种方式。
+        ''' </summary>
+        ''' <param name="key1">按键的虚拟键码。将对游戏发送等价的扫描码。</param>
+        ''' <param name="key2">按键的虚拟键码。将对游戏发送等价的扫描码。</param>
+        ''' <param name="key3">按键的虚拟键码。将对游戏发送等价的扫描码。</param>
+        ''' <param name="key4">按键的虚拟键码。将对游戏发送等价的扫描码。</param>
+        ''' <param name="delay">按键按下到松开的间隔 (毫秒)</param>
+        Public Async Function SendKeyPressToGameAsync(key1 As VirtualKey, key2 As VirtualKey,
+                                                      key3 As VirtualKey, key4 As VirtualKey,
+                                                      Optional delay As Integer = 34) As Task
+            Dim layout = GetKeyboardLayout(0)
+            Await SendKeyPressToGameAsync(key1.ToScanCode(layout), key2.ToScanCode(layout),
+                                          key3.ToScanCode(layout), key4.ToScanCode(layout), delay)
         End Function
 
         ''' <summary>
@@ -90,7 +221,7 @@
         ''' <param name="unicodeChar">按键的 Unicode 码。</param>
         Public Sub SendChar(unicodeChar As Char)
             Dim keyboardInfo As New InjectedInputKeyboardInfo With {
-                .ScanCode = AscW(unicodeChar), .KeyOptions = InjectedInputKeyOptions.Unicode
+                .Unicode = unicodeChar, .KeyOptions = InjectedInputKeyOptions.Unicode
             }
             s_injection.InjectKeyboardInput(keyboardInfo)
         End Sub
@@ -108,7 +239,7 @@
                 .KeyOptions = InjectedInputKeyOptions.Unicode
             }
             For Each ch In text
-                keyboardInfo.ScanCode = AscW(ch)
+                keyboardInfo.Unicode = ch
                 s_injection.InjectKeyboardInput(keyboardInfo)
                 Await Task.Delay(interval)
             Next

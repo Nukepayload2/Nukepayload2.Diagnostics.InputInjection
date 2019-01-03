@@ -11,6 +11,11 @@ Namespace Preview
         <Extension>
         Public Function ToScanCode(vk As VirtualKey) As ScanCode
             Dim layout = GetKeyboardLayout(0)
+            Return vk.ToScanCode(layout)
+        End Function
+
+        <Extension>
+        Friend Function ToScanCode(vk As VirtualKey, layout As IntPtr) As ScanCode
             Dim scan = MapVirtualKeyEx(vk, MapVirtualKeyMapTypes.MAPVK_VK_TO_VSC_EX, layout)
             Return CType(scan, ScanCode)
         End Function

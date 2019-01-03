@@ -27,7 +27,7 @@
         </Grid.RowDefinitions>
         <Grid x:Name="TitleBar">
             <Rectangle x:Name="TitleBarDragElement" Fill="#01FFFFFF"/>
-            <TextBlock Margin="8" IsHitTestVisible="False">Demo - BorderlessWindow</TextBlock>
+            <TextBlock Margin="8" IsHitTestVisible="False">Keyboard injection demo</TextBlock>
             <Button x:Name="BtnAbout" HorizontalAlignment="Right" Background="#3F7F007F" BorderThickness="0" Margin="0,0,48,0" VerticalAlignment="Top" Padding="18,4">Prerelease</Button>
             <Button Click="BtnClose_Click" Style="{StaticResource CloseButtonStyle}"/>
         </Grid>
@@ -36,8 +36,8 @@
                 <TextBlock>Test Area</TextBlock>
                 <TextBox Margin="0,4" x:Name="TxtTest"/>
                 <Button HorizontalAlignment="Left" Padding="16,8" Margin="0,4" x:Name="BtnInputVK" Content="Input WASD with virtual key"/>
-                <Button HorizontalAlignment="Left" Padding="16,8" Margin="0,4" x:Name="BtnInputScan" Content="Input WASD with scan code"/>
-                <Button HorizontalAlignment="Left" Padding="16,8" Margin="0,4" x:Name="BtnInputUnicode" Content="Input WASD with unicode"/>
+                <Button HorizontalAlignment="Left" Padding="16,8" Margin="0,4" x:Name="BtnInputScan" Content="Input Ctrl+A, WASD with scan code"/>
+                <Button HorizontalAlignment="Left" Padding="16,8" Margin="0,4" x:Name="BtnInputUnicode" Content="Input WASD中文にほんご with unicode"/>
             </StackPanel>
         </Border>
     </Grid>

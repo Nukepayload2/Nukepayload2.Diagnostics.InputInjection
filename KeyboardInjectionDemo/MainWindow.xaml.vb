@@ -81,13 +81,15 @@ Class MainWindow
         Await Task.Delay(100)
         Dim inject = InputInjector.TryCreate
         If inject IsNot Nothing Then
-            Await InjectScanKeyDownAndUp(inject, VirtualKey.W.ToScanCode)
+            Await SendKeyPressToGameAsync(VirtualKey.Control, VirtualKey.A)
             Await Task.Delay(100)
-            Await SendKeyPressToGameAsync(VirtualKey.S.ToScanCode, 34)
+            Await InjectScanKeyDownAndUp(inject, ScanCode.KEY_W)
             Await Task.Delay(100)
-            Await InjectScanKeyDownAndUp(inject, ScanCode.KEY_S)
+            Await SendKeyPressToGameAsync(VirtualKey.A)
             Await Task.Delay(100)
-            Await InjectScanKeyDownAndUp(inject, ScanCode.KEY_D)
+            Await SendKeyPressToGameAsync(ScanCode.KEY_S, 34)
+            Await Task.Delay(100)
+            Await SendKeyPressToGameAsync(VirtualKey.D)
         End If
     End Sub
 
@@ -102,7 +104,9 @@ Class MainWindow
             Await Task.Delay(100)
             InjectUnicodeKeyPress(inject, "S"c)
             Await Task.Delay(100)
-            InjectUnicodeKeyPress(inject, "D"c)
+            SendChar("D"c)
+            Await Task.Delay(100)
+            Await SendTextAsync("中文にほんご")
         End If
     End Sub
 End Class
