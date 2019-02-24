@@ -96,7 +96,7 @@ End With
 - [ ] ~~Gamepad Injection~~ (Win32 module `XboxgipSynthetic.dll` is undocumented)
 - [ ] ~~Convenient Gamepad Injection for RAD scenario~~
 - [ ] ~~Uninitialize Gamepad Injection~~ ([XboxgipSynthetic] `SyntheticController_RemoveController` is undocumented)
-- [ ] ~~Pen Injection~~ (Both [user32] `InjectPointerInput` and [user32] `InitializePointerDeviceInjection` are undocumented)
+- [ ] Pen Injection (Both [user32] `InjectPointerInput` and [user32] `InitializePointerDeviceInjection` are undocumented)
 - [ ] ~~Convenient Pen Injection for RAD scenario~~
 - [ ] ~~Uninitialize Pen Injection~~ ([user32] `RemoveInjectionDevice` is undocumented)
 - [x] Mouse Injection (Preview, [user32] `InjectMouseInput` is undocumented)

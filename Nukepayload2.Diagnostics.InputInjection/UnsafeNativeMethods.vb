@@ -23,4 +23,17 @@ Friend Module UnsafeNativeMethods
         <MarshalAs(UnmanagedType.LPArray, SizeParamIndex:=0)>
         contacts As InjectedInputTouchInfo()
     ) As <MarshalAs(UnmanagedType.Bool)> Boolean
+
+    Public Const User32DllName = "user32.dll"
+
+    'HMODULE LoadLibraryW(
+    '    LPCWSTR lpLibFileName
+    ');
+    Declare Unicode Function LoadLibrary Lib "kernel32.dll" Alias "LoadLibraryW" (fileName As String) As IntPtr
+
+    'FARPROC GetProcAddress(
+    '  HMODULE hModule,
+    '  LPCSTR  lpProcName
+    ');
+    Declare Function GetProcAddress Lib "kernel32.dll" (hModule As IntPtr, procName As String) As IntPtr
 End Module

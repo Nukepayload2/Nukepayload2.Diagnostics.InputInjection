@@ -1,4 +1,5 @@
-﻿Imports Nukepayload2.Diagnostics
+﻿Imports System.Threading
+Imports Nukepayload2.Diagnostics
 Imports Nukepayload2.Diagnostics.Preview
 Imports Nukepayload2.UI.Win32
 
@@ -34,8 +35,11 @@ Class MainWindow
 
     Private Async Sub BtnInputVK_ClickAsync(sender As Object, e As RoutedEventArgs) Handles BtnInputVK.Click
         TxtTest.Focus()
-        Await Task.Delay(100)
-        Dim inject = InputInjector.TryCreate
+        Await Task.Delay(100).ConfigureAwait(False)
+        If SynchronizationContext.Current Is Nothing Then
+            Debug.WriteLine("Running on non UI thread")
+        End If
+        Dim inject = InputInjector.TryCreateWithPreviewFeatures
         If inject IsNot Nothing Then
             InjectVirtualKeyPress(inject, VirtualKey.W)
             Await Task.Delay(100)
@@ -79,7 +83,7 @@ Class MainWindow
     Private Async Sub BtnInputScan_ClickAsync(sender As Object, e As RoutedEventArgs) Handles BtnInputScan.Click
         TxtTest.Focus()
         Await Task.Delay(100)
-        Dim inject = InputInjector.TryCreate
+        Dim inject = InputInjector.TryCreateWithPreviewFeatures
         If inject IsNot Nothing Then
             Await SendKeyPressToGameAsync(VirtualKey.Control, VirtualKey.A)
             Await Task.Delay(100)
@@ -96,7 +100,7 @@ Class MainWindow
     Private Async Sub BtnInputUnicode_ClickAsync(sender As Object, e As RoutedEventArgs) Handles BtnInputUnicode.Click
         TxtTest.Focus()
         Await Task.Delay(100)
-        Dim inject = InputInjector.TryCreate
+        Dim inject = InputInjector.TryCreateWithPreviewFeatures
         If inject IsNot Nothing Then
             InjectUnicodeKeyPress(inject, "W"c)
             Await Task.Delay(100)

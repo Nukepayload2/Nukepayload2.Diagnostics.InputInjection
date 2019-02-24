@@ -102,9 +102,11 @@ Public Module Interaction
             If durationMilliseconds > 0 Then
                 Dim timer As New Stopwatch
                 timer.Start()
+                Dim spinWait As New Threading.SpinWait
                 If dragTo Is Nothing Then
                     Do While timer.ElapsedMilliseconds < durationMilliseconds
                         .InjectTouchInput(touch)
+                        spinWait.SpinOnce()
                     Loop
                 Else
                     Dim dragToValue = dragTo.Value
@@ -123,6 +125,7 @@ Public Module Interaction
                         touch.PointerInfo.PixelLocation.PositionX = x
                         touch.PointerInfo.PixelLocation.PositionY = y
                         .InjectTouchInput(touch)
+                        spinWait.SpinOnce()
                     Loop
                 End If
                 timer.Stop()

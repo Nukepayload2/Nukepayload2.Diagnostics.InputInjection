@@ -20,7 +20,7 @@ Namespace Preview
         ''' </summary>
         Public DeltaX As Integer
         ''' <summary>
-        ''' The change in value of an x-coordinate since the last mouse wheel event.
+        ''' The change in value of an y-coordinate since the last mouse wheel event.
         ''' </summary>
         Public DeltaY As Integer
         ''' <summary>
