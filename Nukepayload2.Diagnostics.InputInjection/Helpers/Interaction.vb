@@ -1,11 +1,11 @@
 ﻿Option Strict On
 
 Public Module Interaction
-    Private ReadOnly _injection As InputInjection
+    Friend ReadOnly s_injection As InputInjector
 
     Sub New()
-        _injection = InputInjection.TryCreate
-        _injection?.InitializeTouchInjection(InjectedInputVisualizationMode.Default)
+        s_injection = InputInjector.TryCreate
+        s_injection?.InitializeTouchInjection(InjectedInputVisualizationMode.Default)
     End Sub
 
     ''' <summary>
@@ -56,10 +56,10 @@ Public Module Interaction
             pxWidth = CInt(sizeValue.Width / 2)
             pxHeight = CInt(sizeValue.Height / 2)
         End If
-        If _injection Is Nothing Then
+        If s_injection Is Nothing Then
             Throw New PlatformNotSupportedException
         End If
-        With _injection
+        With s_injection
             Dim touch As New InjectedInputTouchInfo With {
                 .PointerInfo = New InjectedInputPointerInfo With {
                     .PointerId = CUInt(pointerId),
@@ -102,9 +102,11 @@ Public Module Interaction
             If durationMilliseconds > 0 Then
                 Dim timer As New Stopwatch
                 timer.Start()
+                Dim spinWait As New Threading.SpinWait
                 If dragTo Is Nothing Then
                     Do While timer.ElapsedMilliseconds < durationMilliseconds
                         .InjectTouchInput(touch)
+                        spinWait.SpinOnce()
                     Loop
                 Else
                     Dim dragToValue = dragTo.Value
@@ -123,6 +125,7 @@ Public Module Interaction
                         touch.PointerInfo.PixelLocation.PositionX = x
                         touch.PointerInfo.PixelLocation.PositionY = y
                         .InjectTouchInput(touch)
+                        spinWait.SpinOnce()
                     Loop
                 End If
                 timer.Stop()
@@ -132,4 +135,5 @@ Public Module Interaction
             .InjectTouchInput(touch) ' Injecting the touch Up from screen
         End With
     End Sub
+
 End Module

@@ -1,15 +1,21 @@
 # Nukepayload2.Diagnostics.InputInjection
-A .NET Framework Port of Windows.UI.Input.Preview.Injection
+A .NET Standard Port of Windows.UI.Input.Preview.Injection
+
+[Download on Nuget](https://www.nuget.org/packages/Nukepayload2.Diagnostics.InputInjection)
 
 You can use it for software testing ~~or writing tools for cheating in games~~.
 
-We will not wrap undocumented APIs since they have potential compatibility issues.
+We provide wrapped undocumented APIs in the `Nukepayload2.Diagnostics.Preview` namespace.
 
 ## Commonly used types:
-- Nukepayload2.Diagnostics.InputInjection
+- Nukepayload2.Diagnostics.InputInjector
 - Nukepayload2.Diagnostics.Interaction.SendTouch
 
-## Sample codes
+## Requirements
+- Windows 10 (Recommended), Windows 8.1, Windows 8
+- .NET Standard 2.0 or .NET Framework 4.5
+
+## Sample
 #### Touch at 123, 456 for 789 milliseconds with SendTouch
 __VB__
 ```vb
@@ -24,7 +30,7 @@ SendTouch(123, 456, 789);
 #### Touch at 123, 456 for 789 milliseconds with InputInjection
 __VB__
 ```vb
-Dim injection = InputInjection.TryCreate
+Dim injection = InputInjector.TryCreate
 If injection Is Nothing Then MsgBox("Your system is too old to use touch injection.", vbExclamation, "Not supported")
 injection.InitializeTouchInjection(InjectedInputVisualizationMode.Default)
 Const PosX = 123
@@ -90,14 +96,14 @@ End With
 - [ ] ~~Gamepad Injection~~ (Win32 module `XboxgipSynthetic.dll` is undocumented)
 - [ ] ~~Convenient Gamepad Injection for RAD scenario~~
 - [ ] ~~Uninitialize Gamepad Injection~~ ([XboxgipSynthetic] `SyntheticController_RemoveController` is undocumented)
-- [ ] ~~Pen Injection~~ (Both [user32] `InjectPointerInput` and [user32] `InitializePointerDeviceInjection` are undocumented)
+- [ ] Pen Injection (Both [user32] `InjectPointerInput` and [user32] `InitializePointerDeviceInjection` are undocumented)
 - [ ] ~~Convenient Pen Injection for RAD scenario~~
 - [ ] ~~Uninitialize Pen Injection~~ ([user32] `RemoveInjectionDevice` is undocumented)
-- [ ] ~~Mouse Injection~~ ([user32] `InjectMouseInput` is undocumented)
+- [x] Mouse Injection (Preview, [user32] `InjectMouseInput` is undocumented)
 - [ ] ~~Convenient Mouse Injection for RAD scenario~~
-- [ ] ~~Keyboard Injection~~ ([user32] `InjectKeyboardInput` is undocumented)
-- [ ] ~~Convenient Keyboard Injection for RAD scenario~~
-- [ ] ~~Shortcut Injection~~ ([user32] `InjectKeyboardInput` is undocumented)
+- [x] Keyboard Injection (Preview, [user32] `InjectKeyboardInput` is undocumented)
+- [x] Convenient Keyboard Injection for RAD scenario
+- [ ] ~~Shortcut Injection~~ (Duplicate of Keyboard Injection, [user32] `InjectKeyboardInput` is undocumented)
 - [ ] ~~Convenient Shortcut Injection for RAD scenario~~
 - [x] Xml Document for zh-CN locale
 - [ ] Xml Document for en-US locale

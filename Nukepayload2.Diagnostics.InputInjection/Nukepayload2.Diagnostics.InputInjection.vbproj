@@ -1,120 +1,58 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{89F5CB9E-C328-4399-881F-CDABA08F93A0}</ProjectGuid>
-    <OutputType>Library</OutputType>
     <RootNamespace>Nukepayload2.Diagnostics</RootNamespace>
-    <AssemblyName>Nukepayload2.Diagnostics.InputInjection</AssemblyName>
-    <FileAlignment>512</FileAlignment>
-    <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <RemoveIntegerChecks>true</RemoveIntegerChecks>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <DefineDebug>true</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Debug\</OutputPath>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <AssemblyVersion>1.2.1.0</AssemblyVersion>
     <DocumentationFile>Nukepayload2.Diagnostics.InputInjection.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <FileVersion>1.2.1.0</FileVersion>
+    <Version>1.2.1-rc6</Version>
+    <Authors>Nukepayload2</Authors>
+    <Description>This package is a .NET Standard 2.0 Port of Windows.UI.Input.Preview.Injection .
+The touch injection related APIs are successfully ported. However, other APIs are not ported or in preview since they are undocumented in the classic desktop environment.
+Commonly Used Types:
+Nukepayload2.Diagnostics.InputInjector
+Nukepayload2.Diagnostics.Interaction</Description>
+    <PackageTags>touch keyboard mouse input injection</PackageTags>
+    <RepositoryUrl>https://github.com/Nukepayload2/Nukepayload2.Diagnostics.InputInjection</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Nukepayload2/Nukepayload2.Diagnostics.InputInjection</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/Nukepayload2/Nukepayload2.Diagnostics.InputInjection/blob/master/LICENSE</PackageLicenseUrl>
+    <Copyright>Copyright 2018-2019 Nukepayload2</Copyright>
+    <PackageReleaseNotes>Added InputInjectionApiInformation.
+Improved performance of SendTouch with SpinWait.</PackageReleaseNotes>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <DefineDebug>false</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Nukepayload2.Diagnostics.InputInjection.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
+    <NoWarn></NoWarn>
+    <WarningsAsErrors />
   </PropertyGroup>
-  <PropertyGroup>
-    <OptionExplicit>On</OptionExplicit>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
+    <NoWarn></NoWarn>
+    <WarningsAsErrors />
   </PropertyGroup>
-  <PropertyGroup>
-    <OptionCompare>Binary</OptionCompare>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+    <NoWarn></NoWarn>
+    <WarningsAsErrors />
   </PropertyGroup>
-  <PropertyGroup>
-    <OptionStrict>Off</OptionStrict>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <NoWarn></NoWarn>
+    <WarningsAsErrors />
   </PropertyGroup>
-  <PropertyGroup>
-    <OptionInfer>On</OptionInfer>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <Compile Remove="InputInjector.NetFw.vb" />
   </ItemGroup>
-  <ItemGroup>
-    <Import Include="Microsoft.VisualBasic" />
-    <Import Include="System" />
-    <Import Include="System.Collections" />
-    <Import Include="System.Collections.Generic" />
-    <Import Include="System.Data" />
-    <Import Include="System.Diagnostics" />
-    <Import Include="System.Linq" />
-    <Import Include="System.Xml.Linq" />
-    <Import Include="System.Threading.Tasks" />
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
+    <Compile Remove="InputInjector.NetStd.vb" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="InjectedInputPoint.vb" />
-    <Compile Include="InjectedInputPointerInfo.vb" />
-    <Compile Include="InjectedInputPointerOptions.vb" />
-    <Compile Include="InjectedInputRectangle.vb" />
-    <Compile Include="InjectedInputTouchInfo.vb" />
-    <Compile Include="InjectedInputTouchParameters.vb" />
-    <Compile Include="InjectedInputVisualizationMode.vb" />
-    <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="My Project\Application.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Application.myapp</DependentUpon>
-    </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="My Project\Settings.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="Helpers\Interaction.vb" />
-    <Compile Include="PointerButtonChangeType.vb" />
-    <Compile Include="PointerInputType.vb" />
-    <Compile Include="InputInjection.vb" />
-    <Compile Include="UnsafeNativeMethods.vb" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="My Project\Resources.resx">
-      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="My Project\Application.myapp">
-      <Generator>MyApplicationCodeGenerator</Generator>
-      <LastGenOutput>Application.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="My Project\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <CustomToolNamespace>My</CustomToolNamespace>
-      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
-    </None>
-  </ItemGroup>
+  
   <ItemGroup>
     <PackageReference Include="System.ValueTuple">
       <Version>4.5.0</Version>
     </PackageReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
