@@ -27,10 +27,6 @@ Class MainWindow
                 Background = Brushes.Transparent
             End If
         End If
-        If Win32ApiInformation.IsProcessDpiAwarenessApiPresent Then
-            ' Enable DPI awareness
-            DpiAwareness = ProcessDpiAwareness.PerMonitorDpiAware
-        End If
     End Sub
 
     Private Async Sub BtnInputVK_ClickAsync(sender As Object, e As RoutedEventArgs) Handles BtnInputVK.Click
@@ -98,19 +94,12 @@ Class MainWindow
     End Sub
 
     Private Async Sub BtnInputUnicode_ClickAsync(sender As Object, e As RoutedEventArgs) Handles BtnInputUnicode.Click
-        TxtTest.Focus()
-        Await Task.Delay(100)
         Dim inject = InputInjector.TryCreateWithPreviewFeatures
         If inject IsNot Nothing Then
-            InjectUnicodeKeyPress(inject, "W"c)
-            Await Task.Delay(100)
-            InjectUnicodeKeyPress(inject, "A"c)
-            Await Task.Delay(100)
-            InjectUnicodeKeyPress(inject, "S"c)
-            Await Task.Delay(100)
-            SendChar("D"c)
-            Await Task.Delay(100)
-            Await SendTextAsync("中文にほんご")
+            BtnInputUnicode.IsEnabled = False
+            Await Task.Delay(1000)
+            Await SendTextAsync(TxtSendText.Text)
+            BtnInputUnicode.IsEnabled = True
         End If
     End Sub
 End Class

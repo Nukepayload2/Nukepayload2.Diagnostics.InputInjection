@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>KeyboardInjectionDemo</RootNamespace>
     <AssemblyName>KeyboardInjectionDemo</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <MyType>Custom</MyType>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -165,7 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Nukepayload2.UI.WPFBorderlessWindow">
-      <Version>1.0.0-beta6</Version>
+      <Version>1.3.2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

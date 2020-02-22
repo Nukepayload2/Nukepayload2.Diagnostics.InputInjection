@@ -37,7 +37,9 @@
                 <TextBox Margin="0,4" x:Name="TxtTest"/>
                 <Button HorizontalAlignment="Left" Padding="16,8" Margin="0,4" x:Name="BtnInputVK" Content="Input WASD with virtual key"/>
                 <Button HorizontalAlignment="Left" Padding="16,8" Margin="0,4" x:Name="BtnInputScan" Content="Input Ctrl+A, WASD with scan code"/>
-                <Button HorizontalAlignment="Left" Padding="16,8" Margin="0,4" x:Name="BtnInputUnicode" Content="Input WASD中文にほんご with unicode"/>
+                <TextBlock>Send unicode</TextBlock>
+                <TextBox Margin="0,4,0,0" x:Name="TxtSendText">苟利国家生死以, 岂因祸福避趋之</TextBox>
+                <Button HorizontalAlignment="Left" Padding="16,8" Margin="0,4" x:Name="BtnInputUnicode" Content="Input text with unicode after 1s"/>
             </StackPanel>
         </Border>
     </Grid>
